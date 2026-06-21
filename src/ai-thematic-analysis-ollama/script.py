@@ -1,11 +1,17 @@
 import json
 from docx import Document
 from openai import OpenAI
+import os
 
 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
-file_name = "User_02_transcript"
-file_path = f"input/{file_name}.docx"
+# Get the directory where script.py actually lives
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Point to the input file relative to this script
+file_name = "transcript_fictive"
+file_path = os.path.join(BASE_DIR, "input", f"{file_name}.docx")
+csv_filename = os.path.join(BASE_DIR, "output", "analysis_results.csv")
+
 paragraphs = [p.text for p in Document(file_path).paragraphs]
 transcript = "\n".join(paragraphs)
 
@@ -16,7 +22,6 @@ CHUNK_SIZE = 5000
 # Minimal line to split text into chunks
 chunks = [transcript[i : i + CHUNK_SIZE] for i in range(0, len(transcript), CHUNK_SIZE)]
 
-csv_filename = "output/analysis_results.csv"
 with open(csv_filename, "w", encoding="utf-8") as f:
     f.write("document, verbatim, theme, sentiment" + "\n")
 
