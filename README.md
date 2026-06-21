@@ -7,19 +7,7 @@
 Create virtual environment
 
 ```bash
-python3 -m venv .venv
-```
-
-Activate virtual environment
-
-```bash
-source .venv/bin/activate
-```
-
-Check where packages will be installed
-
-```bash
-which pip
+python3 -m venv .venv && source .venv/bin/activate && which pip
 ```
 
 Install necessary packages
