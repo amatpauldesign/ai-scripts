@@ -47,7 +47,7 @@ python3 -m venv .venv && source .venv/bin/activate && which pip
 Install necessary packages
 
 ```bash
-pip install openai
+pip install openai python-docx
 ```
 
 Generate the 'requirements.txt' file
