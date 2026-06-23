@@ -15,7 +15,7 @@ transcript = "\n".join(paragraphs)
 
 # Define your chunk size (e.g., 50,000 characters is safely within a 32k context window)
 # Will depend on the available VRAM
-CHUNK_SIZE = 5000
+CHUNK_SIZE = 1000
 
 # Minimal line to split text into chunks
 chunks = [transcript[i : i + CHUNK_SIZE] for i in range(0, len(transcript), CHUNK_SIZE)]
